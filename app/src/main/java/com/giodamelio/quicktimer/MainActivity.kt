@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.provider.AlarmClock
 import android.util.Log
 import android.view.View
-import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
-import com.google.android.material.snackbar.Snackbar
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +27,10 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
 
         // Let the user know
-        val notificationSnackBar = Snackbar.make(view, "Timer set for ${seconds / 60} minutes", LENGTH_SHORT)
-        notificationSnackBar.show()
+        val toast = Toast.makeText(applicationContext, "Timer set for ${seconds / 60} minutes", Toast.LENGTH_SHORT)
+        toast.show()
+
+        // Close the app
+        finishAffinity()
     }
 }
